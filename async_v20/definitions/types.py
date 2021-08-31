@@ -1311,6 +1311,8 @@ class Instrument(Model):
                  commission: InstrumentCommission = sentinel,
                  guaranteed_stop_loss_order_level_restriction: GuaranteedStopLossOrderLevelRestriction = sentinel,
                  guaranteed_stop_loss_order_mode: GuaranteedStopLossOrderMode = sentinel,
+                 guaranteed_stop_loss_order_execution_premium: DecimalNumber = sentinel,
+                 minimum_guaranteed_stop_loss_distance: DecimalNumber = sentinel,
                  tags: ArrayDict = sentinel, financing: object = sentinel):
         Model.__init__(**locals())
 
