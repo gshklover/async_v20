@@ -265,6 +265,11 @@ class OandaClient(AccountInterface, InstrumentInterface, OrderInterface, Positio
             json_serialize=json.dumps,
             headers=self.headers,
             connector=conn,
+            # override the default 'total' timeout (5min)
+            # TODO: it would be better to override this per-request for stream requests only
+            timeout=aiohttp.ClientTimeout(
+                sock_connect=30
+            )
             # read_timeout=0  # async_v20 will handle timeouts to allow dynamic changing of timeout.
             # after client initialization
         )
