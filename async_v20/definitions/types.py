@@ -2501,11 +2501,11 @@ class Trade(Model):
                  open_time: DateTime = sentinel, state: TradeState = sentinel, initial_units: DecimalNumber = sentinel,
                  initial_margin_required: AccountUnits = sentinel,
                  current_units: DecimalNumber = sentinel, realized_pl: AccountUnits = sentinel,
-                 unrealized_pl: AccountUnits = sentinel, average_close_price: PriceValue = sentinel,
-                 closing_transaction_ids: ArrayTransactionID = sentinel, financing: AccountUnits = sentinel,
-                 close_time: DateTime = sentinel, client_extensions: ClientExtensions = sentinel,
+                 unrealized_pl: AccountUnits = sentinel, average_close_price: PriceValue = None,
+                 closing_transaction_ids: ArrayTransactionID = None, financing: AccountUnits = sentinel,
+                 close_time: DateTime = None, client_extensions: ClientExtensions = sentinel,
                  take_profit_order: TakeProfitOrder = sentinel, stop_loss_order: StopLossOrder = sentinel,
-                 trailing_stop_loss_order: TrailingStopLossOrder = sentinel,
+                 trailing_stop_loss_order: TrailingStopLossOrder = None,
                  margin_used: AccountUnits = sentinel):
         Model.__init__(**locals())
 
