@@ -13,7 +13,7 @@ __all__ = ['AcceptDatetimeFormat', 'AccountFinancingMode', 'AccountID', 'Account
            'MarketIfTouchedOrderReason', 'MarketOrderMarginCloseoutReason', 'MarketOrderReason', 'OrderCancelReason',
            'OrderFillReason', 'OrderID', 'OrderPositionFill', 'OrderSpecifier', 'OrderState', 'OrderStateFilter',
            'OrderTriggerCondition', 'OrderType', 'PositionAggregationMode', 'PriceComponent', 'PriceStatus',
-           'PriceValue', 'Reason', 'RequestID', 'StopLossOrderReason', 'StopOrderReason',
+           'PriceValue', 'Reason', 'RequestID', 'StopLossOrderReason', 'StopOrderReason', 'StopOrderTriggerMode',
            'TakeProfitOrderReason', 'TimeInForce', 'TradeID', 'TradePL', 'TradeSpecifier', 'TradeState',
            'TradeStateFilter', 'TrailingStopLossOrderReason', 'TransactionFilter', 'TransactionID',
            'TransactionRejectReason', 'TransactionType', 'WeeklyAlignment', 'GuaranteedStopLossOrderMode']
@@ -332,6 +332,17 @@ class OrderTriggerCondition(str, Primitive):
 
     def __new__(cls, value):
         assert domain_check(value, possible_values=cls.values)
+        return super().__new__(cls, value)
+
+
+class StopOrderTriggerMode(str, Primitive):
+    """
+    Undocumented by the API documentation
+
+    Has TOP_OF_BOOK value at least.
+    """
+    def __new__(cls, value):
+        # assert domain_check(value, possible_values={'DEFAULT', 'INVERSE'})
         return super().__new__(cls, value)
 
 

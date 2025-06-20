@@ -119,7 +119,7 @@ class StopLossDetails(Model):
     """
 
     def __init__(self, price: PriceValue = sentinel, time_in_force: TimeInForce = sentinel,
-                 gtd_time: DateTime = sentinel,
+                 gtd_time: DateTime = sentinel, trigger_mode: StopOrderTriggerMode = sentinel,
                  client_extensions: ClientExtensions = sentinel):
         Model.__init__(**locals())
 
@@ -4169,6 +4169,7 @@ class StopOrderTransaction(Transaction, type=TransactionType('STOP_ORDER')):
                  partial_fill: str = sentinel,
                  price_bound: PriceValue = sentinel, time_in_force: TimeInForce = 'GTC', gtd_time: DateTime = sentinel,
                  position_fill: OrderPositionFill = 'DEFAULT', trigger_condition: OrderTriggerCondition = 'DEFAULT',
+                 trigger_mode: StopOrderTriggerMode = sentinel,  # undocumented in Oanda API
                  reason: StopOrderReason = sentinel, client_extensions: ClientExtensions = sentinel,
                  take_profit_on_fill: TakeProfitDetails = sentinel, stop_loss_on_fill: StopLossDetails = sentinel,
                  trailing_stop_loss_on_fill: TrailingStopLossDetails = sentinel,
