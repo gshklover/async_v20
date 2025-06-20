@@ -2506,6 +2506,7 @@ class Trade(Model):
                  close_time: DateTime = None, client_extensions: ClientExtensions = sentinel,
                  take_profit_order: TakeProfitOrder = sentinel, stop_loss_order: StopLossOrder = sentinel,
                  trailing_stop_loss_order: TrailingStopLossOrder = None,
+                 dividend_adjustment: AccountUnits = sentinel,
                  margin_used: AccountUnits = sentinel):
         Model.__init__(**locals())
 
