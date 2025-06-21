@@ -39,7 +39,7 @@ def _lookup_schema(endpoint, status):
         return schema, status, True
 
 
-async def _create_response(json_body, endpoint, schema, status, boolean, datetime_format):
+async def _create_response(json_body, endpoint, schema, status, boolean, datetime_format) -> Response:
     # Here we iterate through all the json objects returned in the response
     # and construct the corresponding async_v20 type as determined by the endpoints
     # Schema
@@ -110,16 +110,24 @@ def _construct_json_body_and_schema(line, schema, endpoint):
 
 
 async def _stream_parser(self, response, endpoint, method_name):
+    """
+    Process streaming response and yield parsed Response objects.
+    """
     async with response as resp:
         schema, status, boolean = _lookup_schema(endpoint, resp.status)
         while not resp.content.at_eof():
             try:
                 async with timeout(self.stream_timeout):
-                    line = json.loads(await resp.content.readline())
+                    line = await resp.content.readline().strip()
             except AsyncTimeOutError:
                 msg = f'{method_name} took longer than {self.stream_timeout} seconds'
                 logger.error(msg)
                 raise ResponseTimeout(msg)
+
+            # empty line may appear before connection is closed by the server:
+            if not len(line):
+                continue
+            line = json.loads(line)
 
             json_body, json_schema = _construct_json_body_and_schema(line, schema, endpoint)
 
