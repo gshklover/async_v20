@@ -113,12 +113,13 @@ async def _stream_parser(self, response, endpoint, method_name):
     """
     Process streaming response and yield parsed Response objects.
     """
-    async with response as resp:
+    async with (response as resp):
         schema, status, boolean = _lookup_schema(endpoint, resp.status)
         while not resp.content.at_eof():
             try:
                 async with timeout(self.stream_timeout):
-                    line = await resp.content.readline().strip()
+                    line = await resp.content.readline()
+                    line = line.strip()
             except AsyncTimeOutError:
                 msg = f'{method_name} took longer than {self.stream_timeout} seconds'
                 logger.error(msg)
