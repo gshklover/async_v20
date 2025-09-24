@@ -3052,7 +3052,10 @@ class Account(AccountSummary):
                  resettable_pl_time: DateTime = sentinel,
                  dividend: DecimalNumber = sentinel,
                  dividend_adjustment: AccountUnits = sentinel,
-                 guaranteed_execution_fees: AccountUnits = sentinel):
+                 guaranteed_execution_fees: AccountUnits = sentinel,
+                 true_unrealized_pl: AccountUnits = sentinel,
+                 true_nav: AccountUnits = sentinel
+                 ):
         Model.__init__(**locals())
 
 
