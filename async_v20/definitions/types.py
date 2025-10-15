@@ -1257,6 +1257,40 @@ class GuaranteedStopLossOrderLevelRestriction(Model):
         Model.__init__(**locals())
 
 
+class DayOfWeek(str, Primitive):
+    """
+    Day of the week
+    """
+    MONDAY = "MONDAY"
+    TUESDAY = "TUESDAY"
+    WEDNESDAY = "WEDNESDAY"
+    THURSDAY = "THURSDAY"
+    FRIDAY = "FRIDAY"
+    SATURDAY = "SATURDAY"
+    SUNDAY = "SUNDAY"
+
+
+class FinancingDayOfWeek(Model):
+    """
+    Financing day of the week
+    """
+    def __init__(self, day_of_week: DayOfWeek = sentinel, days_charged: int = sentinel):
+        Model.__init__(**locals())
+
+
+class ArrayFinancingDayOfWeek(Array, contains=FinancingDayOfWeek):
+    pass
+
+
+class InstrumentFinancing(Model):
+    """
+    Instrument financing details
+    """
+    def __init__(self, long_rate: DecimalNumber = sentinel, short_rate: DecimalNumber = sentinel,
+                 financing_days_of_week: ArrayFinancingDayOfWeek = sentinel):
+        Model.__init__(**locals())
+
+
 class Instrument(Model):
     """Full specification of an Instrument.
 
@@ -1299,7 +1333,7 @@ class Instrument(Model):
             attached for a specific Instrument
         guaranteed_stop_loss_order_mode:
             pass
-        financing: :class:`object`
+        financing: :class:`~async_v20.InstrumentFinancing`
 
     """
 
@@ -1314,7 +1348,7 @@ class Instrument(Model):
                  guaranteed_stop_loss_order_mode: GuaranteedStopLossOrderMode = sentinel,
                  guaranteed_stop_loss_order_execution_premium: DecimalNumber = sentinel,
                  minimum_guaranteed_stop_loss_distance: DecimalNumber = sentinel,
-                 tags: ArrayDict = sentinel, financing: object = sentinel):
+                 tags: ArrayDict = sentinel, financing: InstrumentFinancing = sentinel):
         Model.__init__(**locals())
 
 
