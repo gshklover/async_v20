@@ -1279,6 +1279,7 @@ class FinancingDayOfWeek(Model):
 
 
 class ArrayFinancingDayOfWeek(Array, contains=FinancingDayOfWeek):
+    """Array[FinancingDayOfWeek]"""
     pass
 
 

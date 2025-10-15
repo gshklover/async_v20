@@ -185,6 +185,8 @@ instance_attributes = {'long': 'long', 'short': 'short', 'default': 'default', '
                        'minimumGuaranteedStopLossDistance': 'minimum_guaranteed_stop_loss_distance',
                        'trueNAV': 'true_nav',
                        'trueUnrealizedPL': 'true_unrealized_pl',
+                       'shortRate': 'short_rate', 'longRate': 'long_rate', 'financingDaysOfWeek': 'financing_days_of_week',
+                       'daysCharged': 'days_charged', 'dayOfWeek': 'day_of_week'
 }
 
 json_attributes = {'long': 'long', 'short': 'short', 'default': 'default', 'reduce_first': 'reduceFirst',
