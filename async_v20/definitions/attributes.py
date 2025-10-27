@@ -183,8 +183,7 @@ instance_attributes = {'long': 'long', 'short': 'short', 'default': 'default', '
                        'dividendAdjustment': 'dividend_adjustment',
                        'guaranteedStopLossOrderExecutionPremium': 'guaranteed_stop_loss_order_execution_premium',
                        'minimumGuaranteedStopLossDistance': 'minimum_guaranteed_stop_loss_distance',
-                       'trueNAV': 'true_nav',
-                       'trueUnrealizedPL': 'true_unrealized_pl',
+                       'trueNAV': 'true_nav', 'trueUnrealizedPL': 'true_unrealized_pl',
                        'shortRate': 'short_rate', 'longRate': 'long_rate', 'financingDaysOfWeek': 'financing_days_of_week',
                        'daysCharged': 'days_charged', 'dayOfWeek': 'day_of_week'
 }

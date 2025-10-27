@@ -2507,6 +2507,8 @@ class Trade(Model):
             The total profit/loss realized on the closed portion of the Trade.
         unrealized_pl: :class:`~async_v20.AccountUnits`
             The unrealized profit/loss on the open portion of the Trade.
+        true_unrealized_pl: :class:`~async_v20.AccountUnits`
+            The unrealized profit/loss on the open portion of the Trade
         average_close_price: :class:`~async_v20.PriceValue`
             The average closing price of the Trade. Only present if
             the Trade has been closed or reduced at least once.
@@ -2537,7 +2539,7 @@ class Trade(Model):
                  open_time: DateTime = sentinel, state: TradeState = sentinel, initial_units: DecimalNumber = sentinel,
                  initial_margin_required: AccountUnits = sentinel,
                  current_units: DecimalNumber = sentinel, realized_pl: AccountUnits = sentinel,
-                 unrealized_pl: AccountUnits = sentinel, average_close_price: PriceValue = None,
+                 unrealized_pl: AccountUnits = sentinel, true_unrealized_pl: AccountUnits = sentinel, average_close_price: PriceValue = None,
                  closing_transaction_ids: ArrayTransactionID = None, financing: AccountUnits = sentinel,
                  close_time: DateTime = None, client_extensions: ClientExtensions = sentinel,
                  take_profit_order: TakeProfitOrder = sentinel, stop_loss_order: StopLossOrder = sentinel,
