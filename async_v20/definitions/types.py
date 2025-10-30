@@ -2537,7 +2537,7 @@ class Trade(Model):
                  open_time: DateTime = sentinel, state: TradeState = sentinel, initial_units: DecimalNumber = sentinel,
                  initial_margin_required: AccountUnits = sentinel,
                  current_units: DecimalNumber = sentinel, realized_pl: AccountUnits = sentinel,
-                 unrealized_pl: AccountUnits = sentinel, average_close_price: PriceValue = None,
+                 unrealized_pl: AccountUnits = sentinel, true_unrealized_pl: AccountUnits = sentinel, average_close_price: PriceValue = None,
                  closing_transaction_ids: ArrayTransactionID = None, financing: AccountUnits = sentinel,
                  close_time: DateTime = None, client_extensions: ClientExtensions = sentinel,
                  take_profit_order: TakeProfitOrder = sentinel, stop_loss_order: StopLossOrder = sentinel,
