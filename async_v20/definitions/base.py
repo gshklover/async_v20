@@ -148,8 +148,10 @@ class Model(object, metaclass=Metaclass):
             fields.append(name)
             object.__setattr__(self, name, attr)
 
+        annotations = type(self).__annotations__
+
         for name, value in kwargs.items():
-            annotation = self.__annotations__[name]
+            annotation = annotations[name]
             if value is sentinel:
                 pass
             elif value is None:
